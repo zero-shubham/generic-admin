@@ -1,0 +1,64 @@
+.main {
+  display: flex;
+  align-items: center;
+  font-size: 500;
+  margin-bottom: 1rem;
+  font-weight: 100;
+
+  a {
+    text-emphasis: none;
+    text-decoration: none !important;
+  }
+}
+
+.card {
+  height: 100%;
+  padding: 0;
+  width: 10rem;
+  background-color: #f3f2ff !important;
+  border: none !important;
+  &:hover {
+    background: linear-gradient(
+      118deg,
+      #7367f0,
+      rgba(115, 103, 240, 0.9)
+    ) !important;
+    color: white;
+    box-shadow: 0 0 10px 1px rgba(115, 103, 240, 0.7) !important;
+  }
+}
+
+.card-body {
+  padding: 0.5rem 1rem !important;
+}
+
+.active {
+  box-shadow: 0 0 10px 1px rgba(115, 103, 240, 0.7) !important;
+  background: linear-gradient(
+    118deg,
+    #7367f0,
+    rgba(115, 103, 240, 0.7)
+  ) !important;
+  border: 1px solid #7367f0;
+  color: white;
+}
+
+.img {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+}
+
+@keyframes slideout {
+  0% {
+    transform: translateX(0.1rem);
+  }
+
+  100% {
+    transform: translateX(0.3rem);
+  }
+}
+
+.moveRight {
+  animation: slideout 0.2s forwards;
+}

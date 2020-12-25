@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Menu from "containers/Menu";
+import TopBar from "containers/TopBar";
+import { BrowserRouter as Router } from "react-router-dom";
+import MenuItem from "components/MenuItem";
+import homeSvg from "assets/images/home.svg";
+import homeBlackSvg from "assets/images/home_black.svg";
+import SubMenu from "components/SubMenu";
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Menu>
+          <MenuItem to="/" img={homeSvg} imgBlack={homeBlackSvg}>
+            Home
+          </MenuItem>
+          <SubMenu header="SubMenu" path="/submenu">
+            <MenuItem
+              to="/submenu/bookings"
+              img={homeSvg}
+              imgBlack={homeBlackSvg}
+            >
+              Booking
+            </MenuItem>
+            <MenuItem to="/submenu/about" img={homeSvg} imgBlack={homeBlackSvg}>
+              About
+            </MenuItem>
+          </SubMenu>
+        </Menu>
+        <TopBar />
+      </Router>
     </div>
   );
 }

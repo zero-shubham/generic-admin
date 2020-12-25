@@ -1,0 +1,13 @@
+.main {
+  width: 100%;
+
+  :global .card {
+    height: 3rem;
+    padding: 0;
+    display: flex;
+
+    .card-body {
+      padding: 0;
+    }
+  }
+}

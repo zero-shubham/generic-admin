@@ -1,5 +1,18 @@
+@import "index.scss";
 .main {
   width: 15rem;
+
+  @include respond(tab-port) {
+    display: none;
+    width: 50%;
+    position: absolute;
+    left: 0rem;
+    z-index: 1;
+  }
+}
+
+.show {
+  display: block;
 }
 
 .menuLinks {
@@ -11,5 +24,17 @@
 .card {
   height: 100vh;
   padding-bottom: 2rem;
-  background-color: #f3f2ff !important;
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeBtn {
+  display: none;
+  @include respond(tab-port) {
+    display: block;
+  }
 }

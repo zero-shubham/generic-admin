@@ -2,11 +2,17 @@ import { createContext } from "react";
 
 interface IMenuState {
   activeKey: string;
+  showMenu: boolean;
+}
+
+export enum MenuContextActions {
+  SET_ACTIVE_KEY = "SET_ACTIVE_KEY",
+  SET_SHOW_MENU = "SET_SHOW_MENU",
 }
 
 interface IAction {
-  type: string;
-  value: string;
+  type: MenuContextActions;
+  value: any;
 }
 
 interface IMenuContext {
@@ -19,7 +25,15 @@ export const MenuReducer = (state: IMenuState, action: IAction): IMenuState => {
   switch (action.type) {
     case "SET_ACTIVE_KEY": {
       return {
+        ...state,
         activeKey: action.value,
+      };
+    }
+
+    case "SET_SHOW_MENU": {
+      return {
+        ...state,
+        showMenu: action.value,
       };
     }
 

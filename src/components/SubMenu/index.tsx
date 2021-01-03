@@ -10,63 +10,62 @@ import { MenuContext } from "contexts/MenuContext";
 
 type SubMenuProps = {
   header: string;
-  path: string;
+  subpath: string;
   children:
     | React.ReactElement<MenuItemProps>
     | Array<React.ReactElement<MenuItemProps>>;
+  img?: string;
+  className?: string;
 };
 
-function SubMenu({ header, children, path }: SubMenuProps): JSX.Element {
+function SubMenu({
+  header,
+  children,
+  subpath,
+  img,
+  className,
+}: SubMenuProps): JSX.Element {
   const menuContext = useContext(MenuContext);
 
-  const decoratedClick = useAccordionToggle(path, () => {
-    if (menuContext?.menuState.activeKey !== path) {
-      menuContext?.dispatchMenu({
-        type: "SET_ACTIVE_KEY",
-        value: path,
-      });
-    } else {
-      menuContext?.dispatchMenu({
-        type: "SET_ACTIVE_KEY",
-        value: "",
-      });
-    }
+  const decoratedClick = useAccordionToggle(subpath, () => {
+    menuContext?.dispatchMenu({
+      type: "SET_ACTIVE_KEY",
+      value: menuContext?.menuState.activeKey !== subpath ? subpath : "",
+    });
   });
 
   const currLocation = useLocation();
 
   useEffect(() => {
     const matched = matchPath(currLocation.pathname, {
-      path: path,
+      path: subpath,
       strict: true,
     });
 
-    if (matched) {
-      menuContext?.dispatchMenu({
-        type: "SET_ACTIVE_KEY",
-        value: path,
-      });
-    } else {
-      menuContext?.dispatchMenu({
-        type: "SET_ACTIVE_KEY",
-        value: "",
-      });
-    }
+    menuContext?.dispatchMenu({
+      type: "SET_ACTIVE_KEY",
+      value: matched ? subpath : "",
+    });
   }, [currLocation]);
 
   return (
-    <div className={styles.main}>
+    <div className={`${styles.main} ${className}`}>
       <Card className={styles.card}>
         <Card.Header className={styles.cardHeader} onClick={decoratedClick}>
+          {img && <img src={img} className={styles.img} />}
           {header}
         </Card.Header>
-        <Accordion.Collapse eventKey={path}>
+        <Accordion.Collapse eventKey={subpath}>
           <Card.Body className={styles.cardBody}>{children}</Card.Body>
         </Accordion.Collapse>
       </Card>
       <img
         src={chevronSvg}
-        className={styles.chevron}
+        className={
+          menuContext?.menuState.activeKey !== subpath
+            ? `${styles.chevron} ${styles.chevRotate}`
+            : styles.chevron
+        }
         onClick={decoratedClick}
       />
     </div>

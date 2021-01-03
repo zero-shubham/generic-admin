@@ -8,8 +8,17 @@ export interface MenuItemProps {
   children?: React.ReactNode;
   img?: string;
   imgBlack?: string;
+  className?: string;
+  onClick?: (event: React.MouseEvent) => void;
 }
-function MenuItem({ to, children, img, imgBlack }: MenuItemProps): JSX.Element {
+function MenuItem({
+  to,
+  children,
+  img,
+  imgBlack,
+  className,
+  onClick,
+}: MenuItemProps): JSX.Element {
   const [isExact, setIsExact] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const currLocation = useLocation();
@@ -30,9 +39,14 @@ function MenuItem({ to, children, img, imgBlack }: MenuItemProps): JSX.Element {
 
   return (
     <div
-      className={isHovered ? `${styles.main} ${styles.moveRight}` : styles.main}
+      className={
+        isHovered
+          ? `${styles.main} ${styles.moveRight} ${className}`
+          : `${styles.main} ${className}`
+      }
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
     >
       <Link to={to}>
         <Card

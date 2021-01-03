@@ -1,3 +1,32 @@
+@mixin respond($breakpoint) {
+  //1em = 16px
+  @if $breakpoint == phone-s {
+    @media only screen and (max-width: 400px) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 500px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 700px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 750px) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desk {
+    @media only screen and (min-width: 880px) {
+      @content;
+    }
+  }
+}
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -44,6 +73,7 @@ a:visited {
 
 .App {
   display: flex;
+  position: relative;
 }
 
 :root {

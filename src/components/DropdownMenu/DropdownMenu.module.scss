@@ -1,0 +1,41 @@
+.main {
+  background-color: white;
+  box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes hideOut {
+  0% {
+    opacity: 0.1;
+    background-color: transparent;
+    width: 0;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes showIn {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.hide {
+  animation: hideOut 0.2s forwards;
+}
+
+.show {
+  animation: showIn 0.2s forwards;
+}

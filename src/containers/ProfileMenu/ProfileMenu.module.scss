@@ -1,0 +1,52 @@
+@import "index.scss";
+
+.main {
+  position: absolute;
+  right: 0.1rem;
+  top: 0rem;
+  padding: 0.5rem;
+  width: 100%;
+  margin-right: 1.5rem;
+}
+
+.header {
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+  position: absolute;
+  right: 0rem;
+}
+
+.container {
+  margin-top: 3.8rem;
+  position: absolute;
+  right: -1rem;
+  width: fit-content;
+  @include respond(tab-port) {
+    width: 98vw;
+    right: -1.7rem;
+  }
+}
+
+.headerText {
+  color: #626262;
+  user-select: none;
+  margin-right: 1rem;
+}
+
+.headerText_username {
+  font-weight: 600;
+}
+
+.headerText_superadmin {
+  font-size: smaller;
+}
+
+.marginBtm {
+  margin-bottom: 1.2rem;
+}
+
+.paddingDrpMnu {
+  padding: 0.8rem;
+}

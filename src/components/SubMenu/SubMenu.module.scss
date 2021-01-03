@@ -1,15 +1,21 @@
+@import "index.scss";
+
 .card {
-  background-color: #f3f2ff !important;
   border: none !important;
+  @include respond(tab-port) {
+    font-size: 1.5rem;
+  }
 }
 
 .cardBody {
-  padding: 1rem 0 !important;
-  background-color: #f3f2ff !important;
+  padding: 1rem 0 1rem 0.5rem !important;
 }
 
 .cardHeader {
   border-bottom: none !important;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem !important;
 }
 
 .main {
@@ -24,4 +30,16 @@
   transform: rotate(90deg);
   width: 1.2rem;
   height: 1.2rem;
+
+  transition: all 0.2s;
+}
+
+.chevRotate {
+  transform: rotate(180deg);
+}
+
+.img {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
 }

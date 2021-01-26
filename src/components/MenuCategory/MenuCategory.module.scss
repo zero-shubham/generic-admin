@@ -1,0 +1,15 @@
+@import "index.scss";
+.main {
+  margin: 2rem 0rem;
+  padding: 0.5rem 0rem;
+}
+
+.category {
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  font-weight: 100;
+  font-size: 1.2rem;
+  @include respond(tab-port) {
+    font-size: 1.8rem;
+  }
+}

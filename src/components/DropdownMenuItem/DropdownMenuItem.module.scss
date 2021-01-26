@@ -1,0 +1,32 @@
+@import "index.scss";
+
+.main {
+  min-width: 7rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  font-weight: 100;
+  font-size: 0.9rem;
+  color: #626262;
+  line-height: 0.5;
+  transition: all 0.2s;
+
+  @include respond(tab-port) {
+    font-size: 1.5rem;
+    line-height: unset;
+  }
+  &:hover {
+    background-color: #7367f0;
+    color: white;
+  }
+}
+
+.img {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+  @include respond(tab-port) {
+    width: 2rem;
+    height: 2rem;
+  }
+}

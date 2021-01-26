@@ -1,15 +1,19 @@
 import React, { useReducer, createRef } from "react";
 import Menu from "containers/Menu";
 import TopBar from "containers/TopBar";
-import { BrowserRouter as Router } from "react-router-dom";
 import MenuItem from "components/MenuItem";
 import homeSvg from "assets/images/home.svg";
 import homeBlackSvg from "assets/images/home_black.svg";
+import filePicSvg from "assets/images/file-picture.svg";
+import filePicBlackSvg from "assets/images/file-picture_black.svg";
+import userSvg from "assets/images/user.svg";
+import userBlackSvg from "assets/images/user_black.svg";
 import SubMenu from "components/SubMenu";
 import ProfileMenu, { profileMenuParentHandler } from "containers/ProfileMenu";
 import { ProfileMenuContext, ProfileMenuReducer } from "contexts/ProfileMenu";
 import styles from "./Layout.module.scss";
 import { MenuContext, MenuReducer } from "contexts/MenuContext";
+import MenuCategory from "components/MenuCategory";
 
 interface ILayout {
   children?: React.ReactNode;
@@ -53,50 +57,44 @@ function Layout({ children }: ILayout): JSX.Element {
           dispatchProfileMenu,
         }}
       >
-        <Router>
-          <MenuContext.Provider value={{ menuState, dispatchMenu }}>
-            <Menu>
+        <MenuContext.Provider value={{ menuState, dispatchMenu }}>
+          <Menu>
+            <MenuItem
+              to="/"
+              img={homeSvg}
+              imgBlack={homeBlackSvg}
+              className={styles.marginBtm}
+            >
+              Home
+            </MenuItem>
+            <MenuCategory category="Advertiser Data">
               <MenuItem
-                to="/"
-                img={homeSvg}
-                imgBlack={homeBlackSvg}
+                to="/advertisers"
+                img={userSvg}
+                imgBlack={userBlackSvg}
                 className={styles.marginBtm}
               >
-                Home
+                Advertisers
               </MenuItem>
-              <SubMenu
-                header="SubMenu"
-                subpath="/submenu"
-                img={homeBlackSvg}
+              <MenuItem
+                to="/banners"
+                img={filePicSvg}
+                imgBlack={filePicBlackSvg}
                 className={styles.marginBtm}
               >
-                <MenuItem
-                  to="/submenu/bookings"
-                  img={homeSvg}
-                  imgBlack={homeBlackSvg}
-                  className={styles.marginBtm}
-                >
-                  Booking
-                </MenuItem>
-                <MenuItem
-                  to="/submenu/about"
-                  img={homeSvg}
-                  imgBlack={homeBlackSvg}
-                >
-                  About
-                </MenuItem>
-              </SubMenu>
-            </Menu>
+                Banners
+              </MenuItem>
+            </MenuCategory>
+          </Menu>
+        </MenuContext.Provider>
+        <div className={styles.canvas}>
+          <MenuContext.Provider value={{ menuState, dispatchMenu }}>
+            <TopBar>
+              <ProfileMenu />
+            </TopBar>
           </MenuContext.Provider>
-          <div className={styles.canvas}>
-            <MenuContext.Provider value={{ menuState, dispatchMenu }}>
-              <TopBar>
-                <ProfileMenu />
-              </TopBar>
-            </MenuContext.Provider>
-            {children}
-          </div>
-        </Router>
+          {children}
+        </div>
       </ProfileMenuContext.Provider>
     </div>
   );

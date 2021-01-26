@@ -1,21 +1,21 @@
 import React from "react";
-import { MenuItemProps } from "components/MenuItem";
 import styles from "./DropdownMenu.module.scss";
+import { DropdownMenuItemProps } from "components/DropdownMenuItem";
 
-interface IDropdownMenu {
+type DropdownMenuProps = {
   children:
-    | React.ReactElement<MenuItemProps>
-    | Array<React.ReactElement<MenuItemProps>>;
+    | React.ReactElement<DropdownMenuItemProps>
+    | Array<React.ReactElement<DropdownMenuItemProps>>;
 
   show: boolean;
   className?: string;
-}
+};
 
 function DropdownMenu({
   children,
   show,
   className,
-}: IDropdownMenu): JSX.Element {
+}: DropdownMenuProps): JSX.Element {
   const classNames = [styles.main, className];
   classNames.push(show ? styles.show : styles.hide);
 

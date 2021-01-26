@@ -1,6 +1,6 @@
 @import "index.scss";
 .main {
-  width: 15rem;
+  width: 16rem;
 
   @include respond(tab-port) {
     display: none;
@@ -19,6 +19,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include respond(tab-port) {
+    align-items: unset;
+  }
 }
 
 .card {

@@ -8,7 +8,7 @@ import styles from "./SubMenu.module.scss";
 import chevronSvg from "assets/images/chevron-right.svg";
 import { MenuContext } from "contexts/MenuContext";
 
-type SubMenuProps = {
+export type SubMenuProps = {
   header: string;
   subpath: string;
   children:

@@ -10,6 +10,7 @@ import homeSvg from "assets/images/home.svg";
 import homeBlackSvg from "assets/images/home_black.svg";
 import styles from "./ProfileMenu.module.scss";
 import { ProfileMenuContext } from "contexts/ProfileMenu";
+import DropdownMenuItem from "components/DropdownMenuItem";
 
 export function profileMenuParentHandler(
   e: React.MouseEvent,
@@ -60,32 +61,22 @@ function ProfileMenu(): JSX.Element {
             }
             className={styles.paddingDrpMnu}
           >
-            <MenuItem
-              to="/profile"
+            <DropdownMenuItem
               img={homeSvg}
               imgBlack={homeBlackSvg}
+              to="/profile"
               onClick={onMenuClick}
-              className={styles.marginBtm}
             >
               Profile
-            </MenuItem>
-            <MenuItem
-              to="/settings"
+            </DropdownMenuItem>
+            <DropdownMenuItem
               img={homeSvg}
               imgBlack={homeBlackSvg}
-              onClick={onMenuClick}
-              className={styles.marginBtm}
-            >
-              Settings
-            </MenuItem>
-            <MenuItem
               to="/logout"
-              img={homeSvg}
-              imgBlack={homeBlackSvg}
               onClick={onMenuClick}
             >
               Logout
-            </MenuItem>
+            </DropdownMenuItem>
           </DropdownMenu>
         </div>
       </div>

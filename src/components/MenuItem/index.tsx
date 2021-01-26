@@ -3,14 +3,15 @@ import { Link, useLocation, matchPath } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import styles from "./MenuItem.module.scss";
 
-export interface MenuItemProps {
+export type MenuItemProps = {
   to: string;
   children?: React.ReactNode;
   img?: string;
   imgBlack?: string;
   className?: string;
   onClick?: (event: React.MouseEvent) => void;
-}
+};
+
 function MenuItem({
   to,
   children,

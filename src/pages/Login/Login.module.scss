@@ -1,0 +1,66 @@
+.main {
+  height: 100vh;
+  background-image: url("../../assets/images/login-background.jpg");
+  display: grid;
+  grid-template-columns: 22% auto 22%;
+  grid-template-rows: auto 32rem auto;
+}
+
+.cardContainer {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.logoContainer {
+  background-color: #eff2f7;
+  width: 50%;
+}
+
+.formContainer {
+  width: 50%;
+  padding: 2rem 3rem;
+
+  h4 {
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    font-size: 1.32rem;
+    color: #2c2c2c;
+  }
+  p {
+    color: #626262;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  min-height: 12rem;
+  padding: 1rem;
+}
+
+.formBtn {
+  width: 5rem;
+  margin-top: 2rem;
+  background-color: #7367f0;
+
+  &:hover {
+    background-color: #4839eb;
+  }
+}
+
+.formInp {
+  margin-bottom: 0.8rem !important;
+
+  & > * {
+    font-size: 1.2rem !important;
+  }
+}
